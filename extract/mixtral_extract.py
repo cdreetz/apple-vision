@@ -41,11 +41,14 @@ for index, page_dict in enumerate(document):
     print(f"Processing page {index}...")
     text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
     full_input = "Identify the key topics and concepts discussed on this page of the research paper: " + text
-    summary = process_with_language_model(full_input)
-    summaries[index] = {
-        "chunk": text,
-        "summary": summary
-    }
+    try:
+        summary = process_with_language_model(full_input)
+        summaries[index] = {
+            "chunk": text,
+            "summary": summary
+        }
+    except AssertionError as error:
+        print("problem processing page")
 
 output_file_path = 'output_v1.json'  # Update this to your desired output path
 with open(output_file_path, 'w') as outfile:
