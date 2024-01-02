@@ -36,11 +36,12 @@ with open(input_file_path, 'r') as file:
     document = json.load(file)
 
 summaries = {}
-for page, text in document.items():
-    print(f"Processing {page}...")
+for index, page_dict in enumerate(document):
+    print(f"Processing page {index}...")
+    text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
     full_input = "Identify the key topics and concepts discussed on this page of the research paper: " + text
     summary = process_with_language_model(full_input)
-    summaries[page] = {
+    summaries[index] = {
         "chunk": text,
         "summary": summary
     }
