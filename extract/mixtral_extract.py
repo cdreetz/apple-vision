@@ -3,7 +3,7 @@ from exllamav2.generator import *
 import sys, torch, json
 
 config = ExLlamaV2Config()
-config.model_dir = "/mnt/str/models/"
+config.model_dir = "/mnt/models/"
 config.prepare()
 
 model = ExLlamaV2(config)
