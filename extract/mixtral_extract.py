@@ -18,8 +18,8 @@ gen_settings = ExLlamaV2Sampler.Settings()
 
 def process_with_language_model(input_text):
     instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
-    context_ids = torch.tensor(instruction_ids).unsqueeze(0)
-
+    context_ids = instruction_ids if generator.sequence_ids is None \
+        else torch.cat([generator.sequence_ids, instruction_ids], dim = -1)
     generator.begin_stream(context_ids, gen_settings)
 
     output_text = ""
