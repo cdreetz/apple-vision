@@ -17,6 +17,7 @@ generator.set_stop_conditions([tokenizer.eos_token_id])
 gen_settings = ExLlamaV2Sampler.Settings()
 
 def process_with_language_model(input_text):
+    cache = ExLlamaV2Cache(model, lazy = True)
     instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
     context_ids = instruction_ids if generator.sequence_ids is None \
         else torch.cat([generator.sequence_ids, instruction_ids], dim = -1)
