@@ -31,7 +31,7 @@ def process_with_language_model(input_text):
 
     return output_text.strip()
 
-input_file_path = './parsing/all_pages_text.json'  # Update this to your file path
+input_file_path = 'apple-vision/parsing/all_pages_text.json'  # Update this to your file path
 with open(input_file_path, 'r') as file:
     document = json.load(file)
 
