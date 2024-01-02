@@ -109,3 +109,32 @@ pdf_urls = [
 ]
 
 process_pdf_urls(pdf_urls)
+
+
+
+
+
+
+
+
+
+
+# def summarize_chunks():
+#     with open('all_pages_text.json', 'r') as f:
+#         chunks = json.load(f)
+# 
+#     summaries = []
+#     for chunk in chunks:
+#         completion = oai.chat.completions.create(
+#             model="gpt-4-1106-preview",
+#             messages=[
+#                 {"role":"system","content":"You are a helpful assistant."},
+#                 {"role":"user","content":f"Please summarize the following text:\n\n{chunk['chunk']}"},
+#             ]
+#         )
+#         response = completion.choices[0].message.content
+#         summaries.append({"chunk": chunk['chunk'], "summary": response})
+# 
+#     write_json_to_file(summaries, 'summaries.json')
+# 
+# summarize_chunks()
