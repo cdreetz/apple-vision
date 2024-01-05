@@ -28,6 +28,7 @@ def process_with_language_model(input_text):
         chunk, eos, _ = generator.stream()
         if eos: break
         output_text += chunk
+        print(chunk)
         sys.stdout.flush()
 
     return output_text.strip()
