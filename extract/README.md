@@ -10,8 +10,8 @@ pip install exllamav2
 python mixtral_extract.py
 ```
 
-version 1: instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
-version 1: full_input = "Identify the key topics and concepts discussed on this page of the research paper: " + text
+version 1: ```instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)```
+version 1: ```full_input = "Identify the key topics and concepts discussed on this page of the research paper: " + text```
 
 <b>version 2 didn't work because '+ text' was outside of the [/INST]</b>
 version 2: instruction_ids = tokenizer.encode(f"{input_text}", add_bos = True)
