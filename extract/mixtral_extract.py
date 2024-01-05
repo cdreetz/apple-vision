@@ -18,7 +18,7 @@ gen_settings = ExLlamaV2Sampler.Settings()
 
 def process_with_language_model(input_text):
     cache = ExLlamaV2Cache(model, lazy = True)
-    instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
+    instruction_ids = tokenizer.encode(f"{input_text}", add_bos = True)
     context_ids = instruction_ids if generator.sequence_ids is None \
         else torch.cat([generator.sequence_ids, instruction_ids], dim = -1)
     generator.begin_stream(context_ids, gen_settings)
@@ -40,7 +40,7 @@ summaries = {}
 for index, page_dict in enumerate(document):
     print(f"Processing page {index}...")
     text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
-    full_input = "Identify the key topics and concepts discussed on this page of the research paper: " + text
+    full_input = "[INST] Carefully read the following text from a research paper page. Identify and list only the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page.[/INST]: \n\n" + text
     try:
         summary = process_with_language_model(full_input)
         summaries[index] = {
@@ -50,7 +50,7 @@ for index, page_dict in enumerate(document):
     except AssertionError as error:
         print("problem processing page")
 
-output_file_path = 'output_v1.json'  # Update this to your desired output path
+output_file_path = 'output_v2.json'  # Update this to your desired output path
 with open(output_file_path, 'w') as outfile:
     json.dump(summaries, outfile, indent=4)
 
