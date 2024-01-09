@@ -28,3 +28,8 @@ full_input = "[INST] Carefully read the following text from a research paper pag
 instruction_ids = tokenizer.encode(f"{input_text}", add_bos = True)
 full_input = "[INST] Carefully read the following text from a research paper page. Identify and list only the central concepts, theories, or ideas discussed, excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of this page.[/INST] Some of the key concepts discussed were: \n 1." + text
 ```
+
+## version 4
+```
+use the best out of the first 3 to generate all chunks
+```
