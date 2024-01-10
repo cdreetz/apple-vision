@@ -43,7 +43,7 @@ for index, page_dict in enumerate(document):
     if index < 20:
         print(f"Processing page {index}...")
         text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
-        full_input = "Carefully read the following text from a research paper page. Identify and list only the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. This is the text:\n\n" + text
+        full_input = "Carefully read the following text from a research paper page. Identify the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. Considering these instructions, write a summary that encapsulates the information in the most concise way. This is the text:\n\n" + text
         try:
             summary = process_with_language_model(full_input)
             summaries[index] = {
@@ -71,7 +71,8 @@ print("Processing complete. Summaries saved to:", output_file_path)
 ## version 3: instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
 ## version 3: full_input = "Carefully read the following text from a research paper page. Identify and list only the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. This is the text:\n\n" + text
 
-
+## version 4: instruction_ids = tokenizer.encode(f"[INST] {input_text} [/INST]", add_bos = True)
+## version 4: full_input = "Carefully read the following text from a research paper page. Identify the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. Considering these instructions, write a summary that encapsulates the information in the most concise way. If the page is just a list of authors, return the string 'null'. This is the text:\n\n" + text
 
 
 
