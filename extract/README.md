@@ -33,3 +33,15 @@ full_input = "[INST] Carefully read the following text from a research paper pag
 ```
 use the best out of the first 3 to generate all chunks
 ```
+
+# TODO
+
+## version 4.1
+```
+generate questions, and write the question->answer RAG pipeline
+```
+
+## version 4.2
+```
+decide on a quality metric, similarity of ground truth to non contextual QA??
+```
