@@ -1,9 +1,34 @@
 
+---
+### Text Detection
 
-1. Parse PDFs into chunks by page. Write a JSON with the raw text as {chunk: "page1 text"}, {chunks: "page2 text"},....
-2. Start 3090 VM, install exllamav2, download mixtral instruct 3.0bpw
-3. Run mixtral_extract version 1, generate a output_v1.json with {chunk: "chunk", summary: "summary"}
-4. Do for version 2 and version 3
-5. Result should be 3 different json files of Mixtral outputs per chunk
-6. Terminate VM, do the same generation with gpt-3.5
-7. Compare
+<b>class</b> VNDetectTextRectanglesRequest
+
+An image analysis request that finds regions of visible text in an image.
+
+<b>class</b> VNTextObservation
+
+Information about regions of text that an image analysis request detects.
+
+
+---
+
+### Text Recognition
+
+Recognizing Text in Images
+Add text-recognition features to your app using the Vision framework.
+
+Structuring Recognized Text on a Document
+Detect, recognize, and structure text on a business card or receipt using Vision and VisionKit.
+
+Extracting phone numbers from text in images
+Analyze and filter phone numbers from text in live capture by using Vision.
+
+Locating and Displaying Recognized Text
+Configure and perform text recognition on images to identify their textual content.
+
+<b>class</b> VNRecognizeTextRequest
+An image analysis request that finds and recognizes text in an image.
+
+<b>class</b> VNRecognizedTextObservation
+A request that detects and recognizes regions of text in an image.
