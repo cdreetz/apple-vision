@@ -43,7 +43,7 @@ for index, page_dict in enumerate(document):
     if index < 20:
         print(f"Processing page {index}...")
         text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
-        full_input = "Carefully read the following text from a research paper page. Identify the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. Considering these instructions, write a summary that encapsulates the information in the most concise way. This is the text:\n\n" + text
+        full_input = "Carefully read the following text from a research paper page. Identify the central concepts, theories, or ideas discussed. Excluding any author names, affiliations, or other non-conceptual text. Focus on the academic content and key points that are essential to understanding the subject matter of the page. Considering these instructions, write a summary that encapsulates the information in the most concise way. If the chunk is just citations, return 'CITATIONS'. This is the text:\n\n" + text
         try:
             summary = process_with_language_model(full_input)
             summaries[index] = {
@@ -55,7 +55,7 @@ for index, page_dict in enumerate(document):
     else:
         break
 
-output_file_path = 'output_v3.json'  # Update this to your desired output path
+output_file_path = 'output_v3.1.json'  # Update this to your desired output path
 with open(output_file_path, 'w') as outfile:
     json.dump(summaries, outfile, indent=4)
 
