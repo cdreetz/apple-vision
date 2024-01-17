@@ -34,6 +34,9 @@ def process_with_language_model(input_text):
 
     return output_text.strip()
 
+
+
+
 input_file_path = '/apple-vision/parsing/all_pages_text.json'  # Update this to your file path
 with open(input_file_path, 'r') as file:
     document = json.load(file)
@@ -54,6 +57,26 @@ for index, page_dict in enumerate(document):
             print("problem processing page")
     else:
         break
+
+
+for index, page_dict in enumerate(document):
+    if index < 20:
+        print(f"Processing page {index}...")
+        text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
+        full_input = "Carefully read the following summary. Think of the perspective of someone who is unfamiliar with the concepts in the summary.  What is one question one might have on the contents of the summary? Please provide the question after the summary here. Summary:\n\n" + text
+        try:
+            summary = process_with_language_model(full_input)
+            summaries[index] = {
+                "chunk": text,
+                "summary": summary
+            }
+        except AssertionError as error:
+            print("problem processing page")
+    else:
+        break
+
+
+
 
 output_file_path = 'output_v3.1.json'  # Update this to your desired output path
 with open(output_file_path, 'w') as outfile:
