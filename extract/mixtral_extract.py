@@ -61,7 +61,7 @@ for index, page_dict in enumerate(document):
 for index, summary_dict in summaries.items():
     print(f"Generating question for summary {index}...")
     summary = summary_dict['summary']
-    full_input = "Generate a question based on this summary:\n\n" + summary
+    full_input = "Consider the following smmary and the concepts that it includes.  From the perspective of a student what is a question that you think would be answered by getting further information on the summary? Your response should only be the question.  Here is the summary:\n\n" + summary
     try:
         question = process_with_language_model(full_input)
         summaries[index]["question"] = question
