@@ -58,24 +58,15 @@ for index, page_dict in enumerate(document):
     else:
         break
 
-
-for index, page_dict in enumerate(document):
-    if index < 20:
-        print(f"Processing page {index}...")
-        text = page_dict['chunk']  # assuming each dictionary in the list has a 'chunk' key
-        full_input = "Carefully read the following summary. Think of the perspective of someone who is unfamiliar with the concepts in the summary.  What is one question one might have on the contents of the summary? Please provide the question after the summary here. Summary:\n\n" + text
-        try:
-            summary = process_with_language_model(full_input)
-            summaries[index] = {
-                "chunk": text,
-                "summary": summary
-            }
-        except AssertionError as error:
-            print("problem processing page")
-    else:
-        break
-
-
+for index, summary_dict in summaries.items():
+    print(f"Generating question for summary {index}...")
+    summary = summary_dict['summary']
+    full_input = "Generate a question based on this summary:\n\n" + summary
+    try:
+        question = process_with_language_model(full_input)
+        summaries[index]["question"] = question
+    except AssertionError as error:
+        print("problem generating question for summary")
 
 
 output_file_path = 'output_v3.1.json'  # Update this to your desired output path
