@@ -36,10 +36,17 @@ use the best out of the first 3 to generate all chunks
 
 # TODO
 
-## version 4.1
+## version 4.1.1
 ```
-generate questions, and write the question->answer RAG pipeline
+generate questions, and 
 ```
+
+## version 4.1.2
+```
+write the question->answer RAG pipeline
+```
+
+
 
 ## version 4.2
 ```
